@@ -6,19 +6,31 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pirate.model.User;
-import com.pirate.repository.UserRepository;
+import com.pirate.model.entity.user.BaseUser;
+import com.pirate.model.entity.user.UserWithAddress;
+import com.pirate.repository.BaseUserRepository;
+import com.pirate.repository.UserWithAddressRepository;
 
 @Service
 public class UserService {
 	@Autowired
-	private UserRepository userRepo;
+	private BaseUserRepository baseUserRepo;
 	
-	public List<User> getAllUsers() {
-		List<User> users = new ArrayList<>();
+	@Autowired
+	private UserWithAddressRepository userWithAddressRepo;
+	
+	public List<BaseUser> getAllBaseUser() {
+		List<BaseUser> user = new ArrayList<>();
 			
-		userRepo.findAll().forEach(users::add);
+		baseUserRepo.findAll().forEach(user::add);
 			 
-		return users;
+		return user;
+	}
+	public List<UserWithAddress> getAllUserWithAddress() {
+		List<UserWithAddress> user = new ArrayList<>();
+		
+		userWithAddressRepo.findAll().forEach(user::add);
+			 
+		return user;
 	}
 }

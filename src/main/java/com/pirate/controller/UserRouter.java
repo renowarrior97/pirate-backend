@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pirate.model.entity.user.BaseUser;
 import com.pirate.model.entity.user.UserWithAddress;
+import com.pirate.model.entity.user.UserWithFriend;
 import com.pirate.model.entity.user.Username;
 import com.pirate.service.UserService;
 
@@ -30,5 +32,10 @@ public class UserRouter {
 	public List<Username> getAllUsername() {
 		
 		return userServ.getAllUsername();
+	}
+	@GetMapping("/{username}/friends")
+	public UserWithFriend getUserWithFriendByUsername( @PathVariable(required=true, name="username") String username) {
+		
+		return userServ.getUserWithFriendByUsername(username);
 	}
 }

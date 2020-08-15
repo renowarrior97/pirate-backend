@@ -8,7 +8,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 
-import com.pirate.model.entity.user.BaseUser;
+import com.pirate.model.entity.user.Username;
 import com.pirate.model.map.Address;
 
 @Entity(name="AddressWithUser")
@@ -19,14 +19,14 @@ public class AddressWithUser extends Address {
 	(name="users_address",
 	joinColumns=@JoinColumn(name="users_id"),
 	inverseJoinColumns=@JoinColumn(name="address_id"))
-	Set<BaseUser> myUser;
+	Set<Username> myUser;
 
 	//Setters
-	public void setMyUser(Set<BaseUser> myUser) {
+	public void setMyUser(Set<Username> myUser) {
 		this.myUser = myUser;
 	}
 	//Getters
-	public Set<BaseUser> getMyUser() {
+	public Set<Username> getMyUser() {
 		return myUser;
 	}
 	
